@@ -60,6 +60,7 @@ func _physics_process(delta):
 	
 func apply_gvavity():
 	velocity.y += GRAVITY
+	velocity.y = min(velocity.y,300)
 	
 func applay_friction():
 	velocity.x = move_toward(velocity.x,0, FRICTION	)
