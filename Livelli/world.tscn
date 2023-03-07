@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://counmq31rly0t"]
+[gd_scene load_steps=4 format=3 uid="uid://counmq31rly0t"]
 
 [ext_resource type="PackedScene" uid="uid://gash1mhqgjyj" path="res://tile_map.tscn" id="2_04erv"]
 [ext_resource type="PackedScene" uid="uid://boejq57vy4nrn" path="res://player.tscn" id="2_rrgha"]
+[ext_resource type="PackedScene" uid="uid://b3jfyv1u5a7g8" path="res://TilemapObj/spike.tscn" id="3_ev8xt"]
 
 [node name="World" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("2_04erv")]
-position = Vector2(-9, 0)
+position = Vector2(-90, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_rrgha")]
-position = Vector2(81, 108)
+position = Vector2(-27, 108)
+
+[node name="Spike" parent="." instance=ExtResource("3_ev8xt")]
+position = Vector2(45, 117)

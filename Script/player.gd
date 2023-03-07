@@ -1,5 +1,6 @@
 extends CharacterBody2D
-
+#class_name serve per far si che le altre classi vedano quasta classe con il nome asseggnato, in questo caso Player --> per piccolo esempio guarda spike
+class_name Player
 #creazione delle variabili che sono presenti nello Script Variables
 #(ovevro che le vedi cliccando il nodo player a destra, puoi modificarle senza toccare il codice)
 @export var JUMP_FORCE :int= -160
