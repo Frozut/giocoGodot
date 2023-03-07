@@ -1,16 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://counmq31rly0t"]
+[gd_scene load_steps=6 format=3 uid="uid://qkw2oqtugwic"]
 
-[ext_resource type="PackedScene" uid="uid://gash1mhqgjyj" path="res://tile_map.tscn" id="2_04erv"]
-[ext_resource type="PackedScene" uid="uid://boejq57vy4nrn" path="res://player.tscn" id="2_rrgha"]
+[ext_resource type="Script" path="res://Script/world.gd" id="1_wvwa2"]
+[ext_resource type="PackedScene" uid="uid://gash1mhqgjyj" path="res://TilemapObj/tile_map_level_0.tscn" id="2_04erv"]
+[ext_resource type="PackedScene" uid="uid://boejq57vy4nrn" path="res://Player and Enemy/player.tscn" id="2_rrgha"]
 [ext_resource type="PackedScene" uid="uid://b3jfyv1u5a7g8" path="res://TilemapObj/spike.tscn" id="3_ev8xt"]
+[ext_resource type="PackedScene" uid="uid://cf5feysicakmx" path="res://Player and Enemy/Walking_Enemy.tscn" id="5_rirau"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_wvwa2")
 
 [node name="TileMap" parent="." instance=ExtResource("2_04erv")]
 position = Vector2(-90, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_rrgha")]
-position = Vector2(-27, 108)
+position = Vector2(203, 55)
 
 [node name="Spike" parent="." instance=ExtResource("3_ev8xt")]
 position = Vector2(45, 117)
+scale = Vector2(1.07158, 1.00446)
+
+[node name="Spike2" parent="." instance=ExtResource("3_ev8xt")]
+position = Vector2(63, 117)
+
+[node name="Spike3" parent="." instance=ExtResource("3_ev8xt")]
+position = Vector2(27, 117)
+
+[node name="Walking_Enemy" parent="." instance=ExtResource("5_rirau")]
+position = Vector2(276, 72)
