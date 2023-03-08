@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf5feysicakmx"]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://Script/enemy.gd" id="1_dmvpp"]
 [ext_resource type="Texture2D" uid="uid://bqklc6cboowss" path="res://Immagini/characters_packed.png" id="2_w6xsp"]
+[ext_resource type="PackedScene" uid="uid://cv6lmdyffnpxh" path="res://Player and Enemy/hitbox.tscn" id="3_b216x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rnah2"]
 atlas = ExtResource("2_w6xsp")
@@ -41,6 +42,7 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -5.5)
 shape = SubResource("RectangleShape2D_x0x6s")
+disabled = true
 
 [node name="leftLedgeCheck" type="RayCast2D" parent="."]
 position = Vector2(5, -1)
@@ -49,3 +51,8 @@ target_position = Vector2(0, 6)
 [node name="rightLedgeCheck" type="RayCast2D" parent="."]
 position = Vector2(-6, -1)
 target_position = Vector2(0, 6)
+
+[node name="Hitbox" parent="." instance=ExtResource("3_b216x")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-7, 0, -7, -9, -1, -12, -1, -14, 0, -16, 1, -16, 2, -14, 2, -12, 8, -9, 8, 0)
