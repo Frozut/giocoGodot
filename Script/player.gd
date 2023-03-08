@@ -26,7 +26,7 @@ func _physics_process(delta):
 	apply_gvavity()
 	# prende un valore compreso tar 1 e -1 per identificare la direzione che i personaggio dovre prendere
 	var input =Vector2.ZERO 
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input.x = Input.get_axis("ui_left","ui_right")
 	# richiama i metodi per applicare il movimento
 	if input.x == 0:
 		PLAYER_SPRITE.play("Idle")
