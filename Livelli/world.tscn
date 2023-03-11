@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qkw2oqtugwic"]
+[gd_scene load_steps=7 format=3 uid="uid://qkw2oqtugwic"]
 
 [ext_resource type="Script" path="res://Script/world.gd" id="1_wvwa2"]
 [ext_resource type="PackedScene" uid="uid://gash1mhqgjyj" path="res://TilemapObj/tile_map_level_0.tscn" id="2_04erv"]
 [ext_resource type="PackedScene" uid="uid://boejq57vy4nrn" path="res://Player and Enemy/player.tscn" id="2_rrgha"]
 [ext_resource type="PackedScene" path="res://TilemapObj/spike.tscn" id="3_ev8xt"]
 [ext_resource type="PackedScene" path="res://Player and Enemy/Walking_Enemy.tscn" id="5_rirau"]
+[ext_resource type="PackedScene" uid="uid://dw7phfwr0bijs" path="res://TilemapObj/ladder.tscn" id="6_frkak"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_wvwa2")
@@ -27,3 +28,24 @@ position = Vector2(27, 117)
 
 [node name="Walking_Enemy" parent="." instance=ExtResource("5_rirau")]
 position = Vector2(276, 72)
+
+[node name="Ladder" parent="." instance=ExtResource("6_frkak")]
+position = Vector2(90, 90)
+
+[node name="Ladder2" parent="." instance=ExtResource("6_frkak")]
+position = Vector2(90, 72)
+
+[node name="Ladder3" parent="." instance=ExtResource("6_frkak")]
+position = Vector2(90, 54)
+
+[node name="Ladder4" parent="." instance=ExtResource("6_frkak")]
+position = Vector2(90, 36)
+
+[node name="Ladder5" parent="." instance=ExtResource("6_frkak")]
+position = Vector2(90, 18)
+
+[node name="Ladder6" parent="." instance=ExtResource("6_frkak")]
+position = Vector2(90, 0)
+
+[node name="Ladder7" parent="." instance=ExtResource("6_frkak")]
+position = Vector2(90, -18)

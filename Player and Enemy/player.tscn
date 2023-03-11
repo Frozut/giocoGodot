@@ -22,3 +22,9 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_ir5r2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ladder_Check" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(0, 18)
+collide_with_areas = true
+collide_with_bodies = false
