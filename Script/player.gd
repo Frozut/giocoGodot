@@ -16,9 +16,11 @@ const ADITION_FALL_GRAVITY = 2
 #creazione delle variabili
 @onready var PLAYER_SPRITE =  $AnimatedSprite2D
 @onready var LADDER_CHECK = $Ladder_Check
+@onready var JUMP_BUFFER_TIMER = $Jump_Buffer
 #creazione di un enum per gli stati questa e` la verisione semplice
 enum {MOVE,CLIMB}
 var state = MOVE
+var buffered_jump = false
 
 func _ready():
 	#funzione che permetti di cambiare la skin
@@ -59,8 +61,9 @@ func move_state(input):
 	if is_on_floor():
 		#serve per poter resettare il doppio salto quando tocchiamo terra
 		DOUBLE_JUMP = 1
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_just_pressed("ui_up") or buffered_jump:
 			velocity.y= JUMP_FORCE
+			buffered_jump = false
 	else: # questo serve per avere un salto variabile che ti faccia saltare minimo ubn blocco
 		PLAYER_SPRITE.play("Jump")
 		if Input.is_action_just_released("ui_up") and velocity.y < JUMP_RELESASED_FORCE:
@@ -68,7 +71,10 @@ func move_state(input):
 		if Input.is_action_just_pressed("ui_up") and DOUBLE_JUMP > 0:
 			velocity.y= JUMP_FORCE
 			DOUBLE_JUMP -= 1
-			
+		#questo controllo serve per attivare un timer nel quale il personaggio non puo piu fare il dopuble jump
+		if 	Input.is_action_just_pressed("ui_up") :
+			buffered_jump = true
+			JUMP_BUFFER_TIMER.start()
 		if velocity.y >0:
 			velocity.y += ADITION_FALL_GRAVITY	
 	var was_in_air = not is_on_floor()
@@ -120,3 +126,8 @@ func applay_friction():
 	
 func applay_acceleration(amount):
 	velocity.x = move_toward(velocity.x,MAX_SPEED * amount, ACCELARATION)
+
+#questo metodo si attiva quando il timer che abboiamo impostato arriova a zero
+#per crearlo dobbiamo andare sul timer -->nodo --> selezionare il metodo timeout
+func _on_jump_buffer_timeout():
+	buffered_jump=false

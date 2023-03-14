@@ -28,3 +28,9 @@ position = Vector2(0, -5)
 target_position = Vector2(0, 18)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Jump_Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Jump_Buffer" to="." method="_on_jump_buffer_timeout"]
