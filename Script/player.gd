@@ -9,10 +9,10 @@ class_name Player
 @export var ACCELARATION :int= 10
 @export var FRICTION:int= 10
 @export var skin:String
+@export var DOUBLE_JUMP = 1
 #creazione delle costanti
 const GRAVITY = 5
 const ADITION_FALL_GRAVITY = 2
-
 #creazione delle variabili
 @onready var PLAYER_SPRITE =  $AnimatedSprite2D
 @onready var LADDER_CHECK = $Ladder_Check
@@ -55,19 +55,22 @@ func move_state(input):
 			PLAYER_SPRITE.flip_h= true
 		PLAYER_SPRITE.play("Run")
 		applay_acceleration(input.x)
-	
-	#serve epr saltare
+	#serve perr saltare
 	if is_on_floor():
-		if Input.is_action_pressed("ui_up"):
+		#serve per poter resettare il doppio salto quando tocchiamo terra
+		DOUBLE_JUMP = 1
+		if Input.is_action_just_pressed("ui_up"):
 			velocity.y= JUMP_FORCE
 	else: # questo serve per avere un salto variabile che ti faccia saltare minimo ubn blocco
 		PLAYER_SPRITE.play("Jump")
 		if Input.is_action_just_released("ui_up") and velocity.y < JUMP_RELESASED_FORCE:
 			velocity.y=  JUMP_RELESASED_FORCE
+		if Input.is_action_just_pressed("ui_up") and DOUBLE_JUMP > 0:
+			velocity.y= JUMP_FORCE
+			DOUBLE_JUMP -= 1
+			
 		if velocity.y >0:
-			velocity.y += ADITION_FALL_GRAVITY
-			
-			
+			velocity.y += ADITION_FALL_GRAVITY	
 	var was_in_air = not is_on_floor()
 	#metodo he serve per applicare la velocita` al personaggio
 	move_and_slide()
@@ -86,8 +89,6 @@ func climb_state(input):
 		else:
 			PLAYER_SPRITE.flip_h= true
 		PLAYER_SPRITE.play("Run")
-	
-	
 	if is_on_ladder() and not Input.is_action_pressed("ui_up"):
 		state = MOVE
 	if not is_on_ladder():
