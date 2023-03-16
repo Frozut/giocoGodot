@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Script/world.gd" id="1_wvwa2"]
 [ext_resource type="PackedScene" uid="uid://gash1mhqgjyj" path="res://TilemapObj/tile_map_level_0.tscn" id="2_04erv"]
 [ext_resource type="PackedScene" uid="uid://boejq57vy4nrn" path="res://Player and Enemy/player.tscn" id="2_rrgha"]
-[ext_resource type="PackedScene" path="res://TilemapObj/spike.tscn" id="3_ev8xt"]
-[ext_resource type="PackedScene" path="res://Player and Enemy/Walking_Enemy.tscn" id="5_rirau"]
+[ext_resource type="PackedScene" uid="uid://cb05iwq3l0qvo" path="res://TilemapObj/spike.tscn" id="3_ev8xt"]
+[ext_resource type="PackedScene" uid="uid://beojd6csn41o6" path="res://Player and Enemy/Walking_Enemy.tscn" id="5_rirau"]
 [ext_resource type="PackedScene" uid="uid://dw7phfwr0bijs" path="res://TilemapObj/ladder.tscn" id="6_frkak"]
 
 [node name="World" type="Node2D"]

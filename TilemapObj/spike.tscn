@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://cb05iwq3l0qvo"]
 
 [ext_resource type="Texture2D" uid="uid://daxg27avx3a58" path="res://Immagini/tiles_packed.png" id="1_jwgou"]
 [ext_resource type="PackedScene" uid="uid://cv6lmdyffnpxh" path="res://Player and Enemy/hitbox.tscn" id="2_tff3b"]

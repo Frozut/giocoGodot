@@ -9,7 +9,7 @@ class_name Player
 @export var ACCELARATION :int= 10
 @export var FRICTION:int= 10
 @export var skin:String
-@export var DOUBLE_JUMP = 1
+@export var DOUBLE_JUMP:int =1
 #creazione delle costanti
 const GRAVITY = 5
 const ADITION_FALL_GRAVITY = 2
@@ -17,12 +17,17 @@ const ADITION_FALL_GRAVITY = 2
 @onready var PLAYER_SPRITE =  $AnimatedSprite2D
 @onready var LADDER_CHECK = $Ladder_Check
 @onready var JUMP_BUFFER_TIMER = $Jump_Buffer
+@onready var COYOTE_JUMP_TIMER = $Coyote_jump_timer
 #creazione di un enum per gli stati questa e` la verisione semplice
 enum {MOVE,CLIMB}
 var state = MOVE
 var buffered_jump = false
+var double_jump_comodo 
+var coyote_jump = false
+
 
 func _ready():
+	double_jump_comodo = DOUBLE_JUMP
 	#funzione che permetti di cambiare la skin
 	PLAYER_SPRITE.frames = load(skin)
 
@@ -58,9 +63,9 @@ func move_state(input):
 		PLAYER_SPRITE.play("Run")
 		applay_acceleration(input.x)
 	#serve perr saltare
-	if is_on_floor():
+	if is_on_floor() or coyote_jump:
 		#serve per poter resettare il doppio salto quando tocchiamo terra
-		DOUBLE_JUMP = 1
+		DOUBLE_JUMP = double_jump_comodo 
 		if Input.is_action_just_pressed("ui_up") or buffered_jump:
 			velocity.y= JUMP_FORCE
 			buffered_jump = false
@@ -78,14 +83,20 @@ func move_state(input):
 		if velocity.y >0:
 			velocity.y += ADITION_FALL_GRAVITY	
 	var was_in_air = not is_on_floor()
+	var was_on_floor = is_on_floor()
 	#metodo he serve per applicare la velocita` al personaggio
 	move_and_slide()
 	var just_landed= is_on_floor() and was_in_air
 	if(just_landed):
 		PLAYER_SPRITE.play("Run")
 		PLAYER_SPRITE.frame = 1 
+	#se non è sul terrono, ma lo era in precedenza allora significha che ha appena lasciato il terro no
+	var just_left_ground = not is_on_floor() and was_on_floor
+	if just_left_ground and velocity.y>=0:
+		coyote_jump = true
+		COYOTE_JUMP_TIMER.start()
 	
-	
+
 func climb_state(input):
 	if input.y == 0:
 		PLAYER_SPRITE.play("Idle")
@@ -131,3 +142,7 @@ func applay_acceleration(amount):
 #per crearlo dobbiamo andare sul timer -->nodo --> selezionare il metodo timeout
 func _on_jump_buffer_timeout():
 	buffered_jump=false
+
+
+func _on_coyote_jump_timer_timeout():
+	coyote_jump = false
