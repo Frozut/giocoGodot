@@ -14,7 +14,7 @@ skin = "res://Skin/playerOrangeSkin.tres"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_utt4q")
-animation = &"Jump"
+animation = &"Idle"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

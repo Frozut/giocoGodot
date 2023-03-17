@@ -62,13 +62,13 @@ func move_state(input):
 			PLAYER_SPRITE.flip_h= true
 		PLAYER_SPRITE.play("Run")
 		applay_acceleration(input.x)
-	#serve perr saltare
-	if is_on_floor() or coyote_jump:
+		
+	if is_on_floor():
 		#serve per poter resettare il doppio salto quando tocchiamo terra
-		DOUBLE_JUMP = double_jump_comodo 
-		if Input.is_action_just_pressed("ui_up") or buffered_jump:
-			velocity.y= JUMP_FORCE
-			buffered_jump = false
+		reset_extra_jump()
+	#serve perr saltare
+	if can_jump():
+		input_jump()
 	else: # questo serve per avere un salto variabile che ti faccia saltare minimo ubn blocco
 		PLAYER_SPRITE.play("Jump")
 		if Input.is_action_just_released("ui_up") and velocity.y < JUMP_RELESASED_FORCE:
@@ -113,9 +113,15 @@ func climb_state(input):
 	velocity = input * 50
 	move_and_slide()
 
+func can_jump():
+	return is_on_floor() or coyote_jump
 	
-
-
+func reset_extra_jump():
+	DOUBLE_JUMP = double_jump_comodo
+func input_jump():
+	if Input.is_action_just_pressed("ui_up") or buffered_jump:
+		velocity.y= JUMP_FORCE
+		buffered_jump = false
 
 func is_on_ladder():
 	#se non sta collidendo con niente ritorna falso
@@ -126,7 +132,6 @@ func is_on_ladder():
 	if not collider is Ladder :return false
 	#se tutte i controlli di prima erano falsi allora vuol dire che siamo su una ladder e di consegnuenza ritorniamo true
 	return true
-
 	
 func apply_gvavity():
 	velocity.y += GRAVITY
