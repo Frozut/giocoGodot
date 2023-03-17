@@ -72,8 +72,10 @@ func move_state(input):
 	else: # questo serve per avere un salto variabile che ti faccia saltare minimo ubn blocco
 		PLAYER_SPRITE.play("Jump")
 		if Input.is_action_just_released("ui_up") and velocity.y < JUMP_RELESASED_FORCE:
+			#permette di saltare 
 			velocity.y=  JUMP_RELESASED_FORCE
 		if Input.is_action_just_pressed("ui_up") and DOUBLE_JUMP > 0:
+			#serve epr fare il doppio salto 
 			velocity.y= JUMP_FORCE
 			DOUBLE_JUMP -= 1
 		#questo controllo serve per attivare un timer nel quale il personaggio non puo piu fare il dopuble jump
@@ -133,10 +135,11 @@ func is_on_ladder():
 	#se tutte i controlli di prima erano falsi allora vuol dire che siamo su una ladder e di consegnuenza ritorniamo true
 	return true
 	
+#metodo che permete di apllicare la garita`
 func apply_gvavity():
 	velocity.y += GRAVITY
 	velocity.y = min(velocity.y,300)
-	
+#metodo che permete di apllicare la frizione quando si ferma il personaggio
 func applay_friction():
 	velocity.x = move_toward(velocity.x,0, FRICTION	)
 	
