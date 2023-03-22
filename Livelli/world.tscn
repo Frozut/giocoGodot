@@ -10,9 +10,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_u1lgv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -45, 0, 0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 45, -90, 0, 0, 0, 0, -45, -90, 0, 0, 0, 0, -45, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -45, 0, 0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 45, -45, 0, 0, 0, 0, 45, -90, 0, 0, 0, 0, -45, -90, 0, 0, 0, 0, -45, 0)
 }
-point_count = 5
+point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_op4r8"]
 _data = {

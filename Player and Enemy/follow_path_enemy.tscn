@@ -7,10 +7,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_i8g0k"]
 radius = 8.0
 
-[sub_resource type="Animation" id="Animation_gtm4k"]
-length = 8.0
-loop_mode = 1
-
 [sub_resource type="Animation" id="Animation_dth6o"]
 resource_name = "MoveEnmyAlongPathBaunch"
 length = 4.0
@@ -44,6 +40,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+
+[sub_resource type="Animation" id="Animation_gtm4k"]
+length = 8.0
+loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sxr6q"]
 _data = {
