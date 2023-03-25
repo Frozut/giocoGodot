@@ -75,6 +75,7 @@ func move_state(input):
 			#permette di saltare 
 			velocity.y=  JUMP_RELESASED_FORCE
 		if Input.is_action_just_pressed("ui_up") and DOUBLE_JUMP > 0:
+			SoundPlayer.play_sound(SoundPlayer.JUMP)
 			#serve epr fare il doppio salto 
 			velocity.y= JUMP_FORCE
 			DOUBLE_JUMP -= 1
@@ -122,6 +123,7 @@ func reset_extra_jump():
 	DOUBLE_JUMP = double_jump_comodo
 func input_jump():
 	if Input.is_action_just_pressed("ui_up") or buffered_jump:
+		SoundPlayer.play_sound(SoundPlayer.JUMP)
 		velocity.y= JUMP_FORCE
 		buffered_jump = false
 
@@ -151,6 +153,13 @@ func applay_acceleration(amount):
 func _on_jump_buffer_timeout():
 	buffered_jump=false
 
-
+func player_die():
+	#il sound Playuer lo possiamop chiamare quando vogliamo sicome lo abbiamo messo nelle risorse del progetto
+	#andare a vedere in Progetto --> impostazione del progetto--> autoload, cosi facendo il sopund che abbiamo messenno verra
+	#runnato separatamente dal mondo quindi non ci sono problemi che venga eliminato
+	SoundPlayer.play_sound(SoundPlayer.HURT)
+	#serve per resettare la scena come è all'inizio
+	get_tree().reload_current_scene()
+	
 func _on_coyote_jump_timer_timeout():
 	coyote_jump = false
