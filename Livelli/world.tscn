@@ -71,3 +71,5 @@ curve = SubResource("Curve2D_u1lgv")
 position = Vector2(225, 54)
 curve = SubResource("Curve2D_op4r8")
 animation_type = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]

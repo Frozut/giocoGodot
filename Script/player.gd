@@ -18,6 +18,7 @@ const ADITION_FALL_GRAVITY = 2
 @onready var LADDER_CHECK = $Ladder_Check
 @onready var JUMP_BUFFER_TIMER = $Jump_Buffer
 @onready var COYOTE_JUMP_TIMER = $Coyote_jump_timer
+@onready var REMOTE_TRANBSFORM = $RemoteTransform2D
 #creazione di un enum per gli stati questa e` la verisione semplice
 enum {MOVE,CLIMB}
 var state = MOVE
@@ -159,7 +160,12 @@ func player_die():
 	#runnato separatamente dal mondo quindi non ci sono problemi che venga eliminato
 	SoundPlayer.play_sound(SoundPlayer.HURT)
 	#serve per resettare la scena come è all'inizio
-	get_tree().reload_current_scene()
+	queue_free()
+	#get_tree().reload_current_scene()
 	
 func _on_coyote_jump_timer_timeout():
 	coyote_jump = false
+
+func connect_camera(camera):
+	var camera_path = camera.get_path()
+	REMOTE_TRANBSFORM.remote_path = camera_path

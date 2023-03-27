@@ -21,8 +21,6 @@ flip_h = true
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_ir5r2")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Ladder_Check" type="RayCast2D" parent="."]
 position = Vector2(0, -5)
 target_position = Vector2(0, 18)
@@ -36,6 +34,8 @@ one_shot = true
 [node name="Coyote_jump_timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 
 [connection signal="timeout" from="Jump_Buffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="Coyote_jump_timer" to="." method="_on_coyote_jump_timer_timeout"]
