@@ -162,6 +162,7 @@ func player_die():
 	#serve per resettare la scena come è all'inizio
 	queue_free()
 	#get_tree().reload_current_scene()
+	Events.emit_signal("player_died")
 	
 func _on_coyote_jump_timer_timeout():
 	coyote_jump = false

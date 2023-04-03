@@ -1,12 +1,12 @@
 #tool permette di mettere 
-@tool
+
 extends Path2D
 
 enum ANIMATION_TYPE{
 	LOOP,
 	BOUNCE
 }
-#per mettere i det personalizzati dopo la variabile mettere : set = "nome del metodo "-->per i get la stessa cosa ma con get
+#per mettere i set personalizzati dopo la variabile mettere : set = "nome del metodo "-->per i get la stessa cosa ma con get
 @export var animation_type : ANIMATION_TYPE: set = set_animation_type
 @export var speed : int = 1 : set = set_speed
 

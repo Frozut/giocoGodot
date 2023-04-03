@@ -73,3 +73,5 @@ curve = SubResource("Curve2D_op4r8")
 animation_type = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
