@@ -13,16 +13,17 @@ script = ExtResource("1_v86ih")
 skin = "res://Skin/playerOrangeSkin.tres"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
 sprite_frames = ExtResource("2_utt4q")
 animation = &"Idle"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
+position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_ir5r2")
 
 [node name="Ladder_Check" type="RayCast2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -17)
 target_position = Vector2(0, 18)
 collide_with_areas = true
 collide_with_bodies = false
@@ -36,6 +37,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(0, -12)
 
 [connection signal="timeout" from="Jump_Buffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="Coyote_jump_timer" to="." method="_on_coyote_jump_timer_timeout"]
