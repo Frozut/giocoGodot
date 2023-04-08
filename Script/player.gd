@@ -48,7 +48,7 @@ func _physics_process(delta):
 
 func move_state(input):
 	#se stiamo collidendo con una ladder e abbiamo il tasto per saltare  attivo cambiamo lo status a CLIMB 
-	if is_on_ladder() and Input.is_action_pressed("ui_up"):
+	if is_on_ladder() and Input.is_action_just_pressed("ui_up"):
 		state =CLIMB
 	#applica la garvita` al personaggio
 	apply_gvavity()
@@ -144,9 +144,11 @@ func apply_gvavity():
 	velocity.y = min(velocity.y,300)
 #metodo che permete di apllicare la frizione quando si ferma il personaggio
 func applay_friction():
+		#move toword far si che mi sposti da una posizione iniziale  ad una finale col tempo che decide il programmatore
 	velocity.x = move_toward(velocity.x,0, FRICTION	)
 	
 func applay_acceleration(amount):
+		#move toword far si che mi sposti da una posizione iniziale  ad una finale col tempo che decide il programmatore
 	velocity.x = move_toward(velocity.x,MAX_SPEED * amount, ACCELARATION)
 
 #questo metodo si attiva quando il timer che abboiamo impostato arriova a zero
