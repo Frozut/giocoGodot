@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://qkw2oqtugwic"]
+[gd_scene load_steps=13 format=3 uid="uid://qkw2oqtugwic"]
 
 [ext_resource type="Script" path="res://Script/world.gd" id="1_wvwa2"]
 [ext_resource type="PackedScene" uid="uid://gash1mhqgjyj" path="res://TilemapObj/tile_map_level_0.tscn" id="2_04erv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dww5c3b4alwv7" path="res://Player and Enemy/follow_path_enemy.tscn" id="7_7l5lq"]
 [ext_resource type="PackedScene" uid="uid://ba8vfgik0rh4f" path="res://TilemapObj/check_point.tscn" id="8_odght"]
 [ext_resource type="PackedScene" uid="uid://lngvew438vgm" path="res://Player and Enemy/stomp_enemy.tscn" id="9_bxamq"]
+[ext_resource type="AudioStream" uid="uid://c8ltnog2ijmmi" path="res://Sounds/Retro Beat.wav" id="10_vybg1"]
 
 [sub_resource type="Curve2D" id="Curve2D_u1lgv"]
 _data = {
@@ -84,3 +85,8 @@ position = Vector2(180, -18)
 
 [node name="Stomp_Enemy" parent="." instance=ExtResource("9_bxamq")]
 position = Vector2(324, 27)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_vybg1")
+autoplay = true
+bus = &"Music"

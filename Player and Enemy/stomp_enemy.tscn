@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://lngvew438vgm"]
+[gd_scene load_steps=11 format=3 uid="uid://lngvew438vgm"]
 
 [ext_resource type="Texture2D" uid="uid://bqklc6cboowss" path="res://Immagini/characters_packed.png" id="1_e7s52"]
 [ext_resource type="Script" path="res://Script/stomp_enemy.gd" id="1_whjii"]
@@ -34,6 +34,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7v5t"]
 size = Vector2(14, 14)
 
+[sub_resource type="Gradient" id="Gradient_oka31"]
+offsets = PackedFloat32Array(0.00740741, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_10uth"]
+gradient = SubResource("Gradient_oka31")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gv728"]
+emission_shape = 3
+emission_box_extents = Vector3(9, 2, 0)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 2, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 360.0
+scale_min = 0.5
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_10uth")
+
 [node name="Stomp_Enemy" type="Node2D"]
 script = ExtResource("1_whjii")
 
@@ -54,3 +76,10 @@ target_position = Vector2(0, 16)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_gv728")
+one_shot = true
+explosiveness = 1.0

@@ -9,7 +9,7 @@ var state = HOVER
 @onready var timer = $Timer
 @onready var rayCast =$RayCast2D
 @onready var animationPLayer = $AnimatedSprite2D
-
+@onready var particles = $GPUParticles2D
 func _physics_process(delta):
 	#come swotch in java
 	match state:
@@ -31,14 +31,19 @@ func fall_State(delta):
 		var collision_point= rayCast.get_collision_point()
 		position.y = collision_point.y
 		state = LAND 
+		#facciamo partitre il timer quando rycast sta collidendo con il terreno 
+		timer.start(1.00)
+		#attiviamo lo sray di particelle
+		particles.emitting =true
 
 func land_State():
-	state = RISE
+	if timer.time_left ==0:
+		state = RISE
 	
 	
 func rise_State(delta):
 	animationPLayer.play("Rise")
 	#move toword far si che mi sposti da una posizione iniziale  ad una finale col tempo che decide il programmatore
-	position.y = move_toward(position.y,start_position.y, 10 * delta)
+	position.y = move_toward(position.y,start_position.y, 20 * delta)
 	if position.y == start_position.y:
 		state = HOVER

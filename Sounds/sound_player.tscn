@@ -10,24 +10,32 @@ script = ExtResource("1_lxc1d")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio_Players"]
 stream = ExtResource("2_otkj7")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio_Players"]
 stream = ExtResource("2_otkj7")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio_Players"]
 stream = ExtResource("2_otkj7")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio_Players"]
 stream = ExtResource("2_otkj7")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audio_Players"]
 stream = ExtResource("2_otkj7")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Audio_Players"]
 stream = ExtResource("2_otkj7")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Audio_Players"]
 stream = ExtResource("2_otkj7")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Audio_Players"]
 stream = ExtResource("2_otkj7")
+bus = &"Sound"
