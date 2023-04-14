@@ -11,8 +11,8 @@ class_name Player
 @export var skin:String
 @export var DOUBLE_JUMP:int =1
 #creazione delle costanti
-const GRAVITY = 300
-const ADITION_FALL_GRAVITY = 120
+const GRAVITY:int = 300
+const ADITION_FALL_GRAVITY:int = 120
 #creazione delle variabili
 @onready var PLAYER_SPRITE =  $AnimatedSprite2D
 @onready var LADDER_CHECK = $Ladder_Check
@@ -22,31 +22,30 @@ const ADITION_FALL_GRAVITY = 120
 #creazione di un enum per gli stati questa e` la verisione semplice
 enum {MOVE,CLIMB}
 var state = MOVE
-var buffered_jump = false
+var buffered_jump:bool = false
 var double_jump_comodo 
-var coyote_jump = false
+var coyote_jump:bool = false
 
 
-func _ready():
+func _ready() -> void:
 	double_jump_comodo = DOUBLE_JUMP
 	#funzione che permetti di cambiare la skin
 	PLAYER_SPRITE.frames = load(skin)
 
-func _physics_process(delta):
+func _physics_process(delta)-> void:
 	# prende un valore compreso tar 1 e -1 per identificare la direzione che i personaggio dovre prendere
-	var input =Vector2.ZERO 
+	var input :=Vector2.ZERO 
 	input.x = Input.get_axis("ui_left","ui_right")
 	input.y = Input.get_axis("ui_up","ui_down")
 	#questo e come se fosse uno switch in java 
 	match state:
 		MOVE: move_state(input,delta)
 		CLIMB:climb_state(input)
-		
 
 	
 	
 
-func move_state(input,delta):
+func move_state(input,delta)->void:
 	#se stiamo collidendo con una ladder e abbiamo il tasto per saltare  attivo cambiamo lo status a CLIMB 
 	if is_on_ladder() and Input.is_action_just_pressed("ui_up"):
 		state =CLIMB
@@ -117,10 +116,10 @@ func climb_state(input):
 	velocity = input * 50
 	move_and_slide()
 
-func can_jump():
+func can_jump() -> bool:
 	return is_on_floor() or coyote_jump
 	
-func reset_extra_jump():
+func reset_extra_jump() -> void:
 	DOUBLE_JUMP = double_jump_comodo
 func input_jump():
 	if Input.is_action_just_pressed("ui_up") or buffered_jump:
@@ -128,7 +127,7 @@ func input_jump():
 		velocity.y= JUMP_FORCE
 		buffered_jump = false
 
-func is_on_ladder():
+func is_on_ladder() ->bool:
 	#se non sta collidendo con niente ritorna falso
 	if  not LADDER_CHECK.is_colliding(): return false
 	#creiamo una variabile che ci permette di capire grazia al metodo get_collider() che tip di collider e` 
@@ -139,24 +138,24 @@ func is_on_ladder():
 	return true
 	
 #metodo che permete di apllicare la garita`
-func apply_gvavity(delta):
+func apply_gvavity(delta)->void:
 	velocity.y += GRAVITY*delta
 	velocity.y = min(velocity.y,300)
 #metodo che permete di apllicare la frizione quando si ferma il personaggio
-func applay_friction(delta):
+func applay_friction(delta)->void:
 		#move toword far si che mi sposti da una posizione iniziale  ad una finale col tempo che decide il programmatore
 	velocity.x = move_toward(velocity.x,0, FRICTION *delta)
 	
-func applay_acceleration(amount,delta):
+func applay_acceleration(amount,delta)->void:
 		#move toword far si che mi sposti da una posizione iniziale  ad una finale col tempo che decide il programmatore
 	velocity.x = move_toward(velocity.x,MAX_SPEED * amount, ACCELARATION*delta)
 
 #questo metodo si attiva quando il timer che abboiamo impostato arriova a zero
 #per crearlo dobbiamo andare sul timer -->nodo --> selezionare il metodo timeout
-func _on_jump_buffer_timeout():
+func _on_jump_buffer_timeout()->void:
 	buffered_jump=false
 
-func player_die():
+func player_die()->void:
 	#il sound Playuer lo possiamop chiamare quando vogliamo sicome lo abbiamo messo nelle risorse del progetto
 	#andare a vedere in Progetto --> impostazione del progetto--> autoload, cosi facendo il sopund che abbiamo messenno verra
 	#runnato separatamente dal mondo quindi non ci sono problemi che venga eliminato
@@ -166,9 +165,9 @@ func player_die():
 	#get_tree().reload_current_scene()
 	Events.emit_signal("player_died")
 	
-func _on_coyote_jump_timer_timeout():
+func _on_coyote_jump_timer_timeout()->void:
 	coyote_jump = false
 
-func connect_camera(camera):
+func connect_camera(camera)->void:
 	var camera_path = camera.get_path()
 	REMOTE_TRANBSFORM.remote_path = camera_path

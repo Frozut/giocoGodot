@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var direction = Vector2.RIGHT
+var direction := Vector2.RIGHT
 
 @onready var enemy_Sprite = $AnimatedSprite2D
 
@@ -10,7 +10,7 @@ var direction = Vector2.RIGHT
 func _physics_process(delta):
 	enemy_Sprite.play("Walking")
 	#metodo che mi permette di capire se mi sto scontrasndo contro un muro
-	var found_wall = is_on_wall()
+	var found_wall :bool= is_on_wall()
 	#capisco se sta facedo collissione col terreno nel caso si vuol dire che non si trova su un orlo
 	#in caso contrario vuol dire che sotto c'e il vuoto 
 	var found_edge = not leftLedgeCheck.is_colliding() or not rightLedgeCheck.is_colliding()
