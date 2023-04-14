@@ -6,13 +6,13 @@ class_name Player
 @export var JUMP_FORCE :int= -160
 @export var JUMP_RELESASED_FORCE:int= -60
 @export var MAX_SPEED :int= 75
-@export var ACCELARATION :int= 10
-@export var FRICTION:int= 10
+@export var ACCELARATION :int= 600
+@export var FRICTION:int= 600
 @export var skin:String
 @export var DOUBLE_JUMP:int =1
 #creazione delle costanti
-const GRAVITY = 5
-const ADITION_FALL_GRAVITY = 2
+const GRAVITY = 300
+const ADITION_FALL_GRAVITY = 120
 #creazione delle variabili
 @onready var PLAYER_SPRITE =  $AnimatedSprite2D
 @onready var LADDER_CHECK = $Ladder_Check
@@ -39,30 +39,30 @@ func _physics_process(delta):
 	input.y = Input.get_axis("ui_up","ui_down")
 	#questo e come se fosse uno switch in java 
 	match state:
-		MOVE: move_state(input)
+		MOVE: move_state(input,delta)
 		CLIMB:climb_state(input)
 		
 
 	
 	
 
-func move_state(input):
+func move_state(input,delta):
 	#se stiamo collidendo con una ladder e abbiamo il tasto per saltare  attivo cambiamo lo status a CLIMB 
 	if is_on_ladder() and Input.is_action_just_pressed("ui_up"):
 		state =CLIMB
 	#applica la garvita` al personaggio
-	apply_gvavity()
+	apply_gvavity(delta)
 	# richiama i metodi per applicare il movimento
 	if input.x == 0:
 		PLAYER_SPRITE.play("Idle")
-		applay_friction()
+		applay_friction(delta)
 	else :
 		if input.x ==-1:
 			PLAYER_SPRITE.flip_h= false 
 		else:
 			PLAYER_SPRITE.flip_h= true
 		PLAYER_SPRITE.play("Run")
-		applay_acceleration(input.x)
+		applay_acceleration(input.x,delta)
 		
 	if is_on_floor():
 		#serve per poter resettare il doppio salto quando tocchiamo terra
@@ -85,7 +85,7 @@ func move_state(input):
 			buffered_jump = true
 			JUMP_BUFFER_TIMER.start()
 		if velocity.y >0:
-			velocity.y += ADITION_FALL_GRAVITY	
+			velocity.y += ADITION_FALL_GRAVITY*delta
 	var was_in_air = not is_on_floor()
 	var was_on_floor = is_on_floor()
 	#metodo he serve per applicare la velocita` al personaggio
@@ -139,17 +139,17 @@ func is_on_ladder():
 	return true
 	
 #metodo che permete di apllicare la garita`
-func apply_gvavity():
-	velocity.y += GRAVITY
+func apply_gvavity(delta):
+	velocity.y += GRAVITY*delta
 	velocity.y = min(velocity.y,300)
 #metodo che permete di apllicare la frizione quando si ferma il personaggio
-func applay_friction():
+func applay_friction(delta):
 		#move toword far si che mi sposti da una posizione iniziale  ad una finale col tempo che decide il programmatore
-	velocity.x = move_toward(velocity.x,0, FRICTION	)
+	velocity.x = move_toward(velocity.x,0, FRICTION *delta)
 	
-func applay_acceleration(amount):
+func applay_acceleration(amount,delta):
 		#move toword far si che mi sposti da una posizione iniziale  ad una finale col tempo che decide il programmatore
-	velocity.x = move_toward(velocity.x,MAX_SPEED * amount, ACCELARATION)
+	velocity.x = move_toward(velocity.x,MAX_SPEED * amount, ACCELARATION*delta)
 
 #questo metodo si attiva quando il timer che abboiamo impostato arriova a zero
 #per crearlo dobbiamo andare sul timer -->nodo --> selezionare il metodo timeout
