@@ -19,10 +19,10 @@ func _physics_process(delta):
 		RISE:rise_State(delta)
  
 
-func hover_State():
+func hover_State()-> void:
 	state = FALL
 
-func fall_State(delta):
+func fall_State(delta)-> void:
 	animationPLayer.play("Fall")
 	#lo facciamo muovere verso il basso,  usiamo position al posto che velocity siccome e` un semplice nodo e non e`un character 2d 
 	position.y +=100*delta
@@ -36,12 +36,12 @@ func fall_State(delta):
 		#attiviamo lo sray di particelle
 		particles.emitting =true
 
-func land_State():
+func land_State()-> void:
 	if timer.time_left ==0:
 		state = RISE
 	
 	
-func rise_State(delta):
+func rise_State(delta)-> void:
 	animationPLayer.play("Rise")
 	#move toword far si che mi sposti da una posizione iniziale  ad una finale col tempo che decide il programmatore
 	position.y = move_toward(position.y,start_position.y, 20 * delta)

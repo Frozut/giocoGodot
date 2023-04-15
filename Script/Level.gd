@@ -18,7 +18,7 @@ func _ready():
 	#grazie alla funzione sottostante riusciamo a prendere la posiizone del palyer quando spowna per successivamente settarla quando creamoun nuovo player
 	player_spaw_location = player.global_position
 	#questo serve per collegare l'evento che abbiamo creato nella script Events() che adesso e` una variabile globale 
-	#guarda Soud player per capire come si fa, ATTENZIONE E` DIVERSO RISPETO Alla precedente versione di godot
+	#guarda Sound player per capire come si fa, ATTENZIONE E` DIVERSO RISPETO Alla precedente versione di godot
 	Events.player_died.connect(_on_player_died)
 	Events.hit_checkpoint.connect(_on_hit_checkpoint)
 
