@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Gioco Godot"
-run/main_scene="res://Livelli/World.tscn"
+run/main_scene="res://Livelli/TrueLevels/Level1.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 
 [autoload]
 
 SoundPlayer="*res://Sounds/sound_player.tscn"
 Events="*res://Script/Events.gd"
+Transition="*res://transition.tscn"
 
 [display]
 
