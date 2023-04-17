@@ -1,11 +1,13 @@
-extends Node2D
+extends CharacterBody2D
 
 enum {MOVING,STOP}
 var state = MOVING
 
 @onready var animation = $AnimatedSprite2D
+@onready var timer = $Timer
+var direction := Vector2.RIGHT
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	match state:
 		MOVING: moving_state()
 		STOP: stop_state()
@@ -13,7 +15,18 @@ func _process(delta: float) -> void:
 
 
 func moving_state()-> void:
-	pass
+	timer.start()
+	var found_wall :bool= is_on_wall()
+	
+	if found_wall:
+		direction *= -1
+		if animation.flip_h==false:
+			animation.flip_h=true
+		else:
+			animation.flip_h=false
+	velocity = direction*25
+	move_and_slide()
+	
 
 func stop_state()-> void :
 	pass
