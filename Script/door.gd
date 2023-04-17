@@ -2,20 +2,21 @@ extends Area2D
 
 @export_file("*.tscn") var target_level_path: String 
 
-var over_player:bool = false
+var player:Player
 
 func _process(delta: float) -> void:
-	if not over_player:return
-	if Input.is_action_just_pressed("ui_up"):
+	if not player:return
+	if not player.is_on_floor():return
+	if Input.is_action_just_pressed("ui_accept"):
 		if target_level_path.is_empty():return
+		go_to_next_room()
 		
 	
 
 func _on_body_entered(body)-> void :
 	if not body is Player: return
-	over_player = true
-	if target_level_path.is_empty():return
-	go_to_next_room()
+	player = body
+	
 
 
 func go_to_next_room()-> void :
@@ -34,4 +35,4 @@ func go_to_next_room()-> void :
 
 func _on_body_exited(body):
 	if not body is Player: return
-	over_player = false
+	player = null
