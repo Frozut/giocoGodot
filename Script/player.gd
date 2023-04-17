@@ -42,8 +42,6 @@ func _physics_process(delta)-> void:
 		MOVE: move_state(input,delta)
 		CLIMB:climb_state(input)
 
-	
-	
 
 func move_state(input,delta)->void:
 	#se stiamo collidendo con una ladder e abbiamo il tasto per saltare  attivo cambiamo lo status a CLIMB 
@@ -171,3 +169,7 @@ func _on_coyote_jump_timer_timeout()->void:
 func connect_camera(camera)->void:
 	var camera_path = camera.get_path()
 	REMOTE_TRANBSFORM.remote_path = camera_path
+
+func jump_on_bonch_enemy()->void:
+	velocity.y = -80
+	
