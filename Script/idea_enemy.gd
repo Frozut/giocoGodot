@@ -8,6 +8,11 @@ var state = MOVING
 @onready var jump_area := $"Area no damage/CollisionShape2D"  
 @onready var hitbox_Collision := $Hitbox
 var direction :=Vector2.RIGHT
+	
+	
+	
+func _ready() -> void:
+	timer.start(5)
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -17,8 +22,6 @@ func _physics_process(delta: float) -> void:
 func moving_state()-> void:
 	jump_area.disabled = true
 	animation.play("walking")
-	if not timer.time_left>0:
-		timer.start()
 	var found_wall :bool= is_on_wall()
 	if found_wall:
 		direction *= -1
@@ -33,10 +36,9 @@ func moving_state()-> void:
 func stop_state()-> void :
 	jump_area.disabled = false
 	animation.play("stop")
-	if not timer.time_left>0:
-		timer.start(0.50)
 	await timer.timeout
 	state = MOVING
+	timer.start(5)
 
 
 func _on_area_no_damage_body_entered(body: Node2D) -> void:
@@ -50,3 +52,6 @@ func _on_area_no_damage_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	state = STOP
+	timer.start(1.00)
+	
+	
