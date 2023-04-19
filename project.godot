@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gioco Godot"
-run/main_scene="res://Livelli/TrueLevels/Level1.tscn"
+run/main_scene="res://menuProva.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 
 [autoload]
@@ -37,4 +37,5 @@ window/stretch/mode="viewport"
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
 textures/canvas_textures/default_texture_filter=0

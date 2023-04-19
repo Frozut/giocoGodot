@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://j5gii0dkfa2b"]
+
+[ext_resource type="Script" path="res://Script/coin.gd" id="1_t2bp0"]
+[ext_resource type="Texture2D" uid="uid://daxg27avx3a58" path="res://Immagini/tiles_packed.png" id="2_culmn"]
+
+[node name="coin" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_t2bp0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("2_culmn")
+region_enabled = true
+region_rect = Rect2(126, 54, 18, 18)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1, -5, 1, -5, 5, -9, 5, -12, 4, -13, -4, -13, -5, -12, -5, -9)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb4kskrxbdi0y"]
+
+[ext_resource type="Script" path="res://Script/Menu/menuProva.gd" id="1_kqc3e"]
+
+[sub_resource type="Theme" id="Theme_0w4yi"]
+
+[node name="menuProva" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kqc3e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.68, 0.84, 0.9, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 324.0
+offset_bottom = 180.0
+theme = SubResource("Theme_0w4yi")
+
+[node name="StartButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 20.0
+offset_right = 196.0
+offset_bottom = 51.0
+text = "new game 
+"
+
+[node name="Button2" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 68.0
+offset_right = 196.0
+offset_bottom = 99.0
+text = "option
+"
+
+[node name="ExitButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 119.0
+offset_right = 196.0
+offset_bottom = 150.0
+text = "exit
+"
+
+[connection signal="pressed" from="ColorRect/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ColorRect/ExitButton" to="." method="_on_exit_button_pressed"]
