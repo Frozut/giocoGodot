@@ -39,5 +39,10 @@ one_shot = true
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 position = Vector2(0, -12)
 
+[node name="TimerInvulnerability" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="Jump_Buffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="Coyote_jump_timer" to="." method="_on_coyote_jump_timer_timeout"]
+[connection signal="timeout" from="TimerInvulnerability" to="." method="_on_timer_invulnerability_timeout"]

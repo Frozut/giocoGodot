@@ -6,7 +6,8 @@ extends Area2D
 #per andare a creare il metodo dobbiamo andare su nodi dell'area2d e selezionare body_entered 
 #che tradotto significa letteralmente in collisione con un body
 func _on_body_entered(body):
-	if body is Player:
-		body.player_die()
+	if not body is Player: return
+	body.player_taking_damage()	
 
-		
+
+

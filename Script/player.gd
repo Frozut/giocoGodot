@@ -10,6 +10,7 @@ class_name Player
 @export var FRICTION:int= 600
 @export var skin:String
 @export var DOUBLE_JUMP:int =1
+@export var HEALT: int = 3
 #creazione delle costanti
 const GRAVITY:int = 300
 const ADITION_FALL_GRAVITY:int = 120
@@ -19,15 +20,17 @@ const ADITION_FALL_GRAVITY:int = 120
 @onready var JUMP_BUFFER_TIMER = $Jump_Buffer
 @onready var COYOTE_JUMP_TIMER = $Coyote_jump_timer
 @onready var REMOTE_TRANBSFORM = $RemoteTransform2D
+@onready var TIMER_INVULERABILITY = $TimerInvulnerability
 #creazione di un enum per gli stati questa e` la verisione semplice
 enum {MOVE,CLIMB}
 var state = MOVE
 var buffered_jump:bool = false
 var double_jump_comodo 
 var coyote_jump:bool = false
-
+var current_healt:int
 
 func _ready() -> void:
+	current_healt= HEALT
 	double_jump_comodo = DOUBLE_JUMP
 	#funzione che permetti di cambiare la skin
 	PLAYER_SPRITE.frames = load(skin)
@@ -152,12 +155,23 @@ func applay_acceleration(amount,delta)->void:
 #per crearlo dobbiamo andare sul timer -->nodo --> selezionare il metodo timeout
 func _on_jump_buffer_timeout()->void:
 	buffered_jump=false
-
-func player_die()->void:
+func player_taking_damage()-> void :
+	
+	if TIMER_INVULERABILITY.is_stopped():TIMER_INVULERABILITY.start()
 	#il sound Playuer lo possiamop chiamare quando vogliamo sicome lo abbiamo messo nelle risorse del progetto
 	#andare a vedere in Progetto --> impostazione del progetto--> autoload, cosi facendo il sopund che abbiamo messenno verra
 	#runnato separatamente dal mondo quindi non ci sono problemi che venga eliminato
 	SoundPlayer.play_sound(SoundPlayer.HURT)
+	current_healt -=1
+	set_modulate(Color(1,0.3,0.3,0.3))
+	velocity.y = -80
+	velocity.x = -200
+	if current_healt==0:player_die()
+	
+	
+	
+func player_die()->void:
+	current_healt = HEALT
 	#serve per resettare la scena come è all'inizio
 	queue_free()
 	#get_tree().reload_current_scene()
@@ -173,3 +187,6 @@ func connect_camera(camera)->void:
 func jump_on_bonch_enemy()->void:
 	velocity.y = -80
 	
+
+func _on_timer_invulnerability_timeout() -> void:
+	set_modulate(Color.WHITE)
