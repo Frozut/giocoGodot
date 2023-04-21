@@ -19,8 +19,8 @@ func _ready():
 	player_spaw_location = player.global_position
 	#questo serve per collegare l'evento che abbiamo creato nella script Events() che adesso e` una variabile globale 
 	#guarda Sound player per capire come si fa, ATTENZIONE E` DIVERSO RISPETO Alla precedente versione di godot
-	Events.player_died.connect(_on_player_died) 
-	Events.hit_checkpoint.connect(_on_hit_checkpoint)
+	Events_and_Var.player_died.connect(_on_player_died) 
+	Events_and_Var.hit_checkpoint.connect(_on_hit_checkpoint)
 
 
 #questa funzione si collega con quella l'events che ce` sopra

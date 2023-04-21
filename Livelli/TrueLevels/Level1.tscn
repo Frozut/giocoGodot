@@ -27,13 +27,13 @@ point_count = 2
 
 [node name="Level" instance=ExtResource("1_2qnvs")]
 
-[node name="Collectibles" type="Node" parent="." index="0"]
+[node name="Player" parent="." index="0"]
+position = Vector2(477, 45)
+
+[node name="Collectibles" type="Node" parent="." index="3"]
 
 [node name="coin" parent="Collectibles" index="0" instance=ExtResource("2_timy8")]
 position = Vector2(441, 54)
-
-[node name="Player" parent="." index="1"]
-position = Vector2(477, 45)
 
 [node name="TileMap" parent="." index="4" instance=ExtResource("2_kjy0y")]
 position = Vector2(-90, 0)

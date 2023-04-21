@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb4kskrxbdi0y"]
+[gd_scene load_steps=4 format=3 uid="uid://bb4kskrxbdi0y"]
 
 [ext_resource type="Script" path="res://Script/Menu/menuProva.gd" id="1_wdht5"]
+[ext_resource type="FontFile" uid="uid://c8cgjsxrmqtt2" path="res://Font/ThaleahFat.ttf" id="2_e73rp"]
 
 [sub_resource type="Theme" id="Theme_0w4yi"]
 
@@ -29,11 +30,13 @@ offset_bottom = 180.0
 theme = SubResource("Theme_0w4yi")
 
 [node name="StartButton" type="Button" parent="ColorRect"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 108.0
 offset_top = 20.0
-offset_right = 196.0
+offset_right = 197.0
 offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_e73rp")
 text = "new game 
 "
 
@@ -43,6 +46,7 @@ offset_left = 108.0
 offset_top = 68.0
 offset_right = 196.0
 offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_e73rp")
 text = "option
 "
 
@@ -52,6 +56,7 @@ offset_left = 108.0
 offset_top = 119.0
 offset_right = 196.0
 offset_bottom = 150.0
+theme_override_fonts/font = ExtResource("2_e73rp")
 text = "exit
 "
 

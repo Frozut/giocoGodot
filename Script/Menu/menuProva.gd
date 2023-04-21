@@ -9,6 +9,7 @@ func _ready() -> void:
 
 
 func _on_start_button_pressed() -> void:
+	Utils.load_game()
 	Transition.play_exit_transition()
 	#grazie a questo comando mettimano il gioco in pausa
 	get_tree().paused = true 

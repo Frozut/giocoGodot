@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dswqds1i14j1s"]
+
+[ext_resource type="Script" path="res://Script/HUD_Script/hud.gd" id="1_f1m1q"]
+[ext_resource type="Texture2D" uid="uid://ocyui5vx8aly" path="res://Immagini/Gem.png" id="1_kdhlw"]
+[ext_resource type="FontFile" uid="uid://c8cgjsxrmqtt2" path="res://Font/ThaleahFat.ttf" id="3_2udw4"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_f1m1q")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 58.0
+offset_bottom = 27.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 26.0
+texture = ExtResource("1_kdhlw")
+
+[node name="Gem_Counter" type="Label" parent="."]
+offset_left = 26.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 23.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("3_2udw4")
+text = "0"
+vertical_alignment = 1

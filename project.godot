@@ -17,8 +17,9 @@ config/features=PackedStringArray("4.0", "Forward Plus")
 [autoload]
 
 SoundPlayer="*res://Sounds/sound_player.tscn"
-Events="*res://Script/Events.gd"
+Events_and_Var="*res://Script/Events_and_Var.gd"
 Transition="*res://HUD/transition.tscn"
+Utils="*res://Script/Utils.gd"
 
 [display]
 
