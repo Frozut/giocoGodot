@@ -164,8 +164,12 @@ func player_taking_damage()-> void :
 	SoundPlayer.play_sound(SoundPlayer.HURT)
 	current_healt -=1
 	set_modulate(Color(1,0.3,0.3,0.3))
+	if velocity.x >0:
+		velocity.x = -200	
+	else: 
+		velocity.x = 200	
 	velocity.y = -80
-	velocity.x = -200
+	
 	if current_healt==0:player_die()
 	
 	
