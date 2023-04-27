@@ -21,9 +21,5 @@ func reset_Heart() -> void:
 func _ready()->void:
 	Events_and_Var.signal_player_hurt.connect(update_health_display)
 	Events_and_Var.reset_heart.connect(reset_Heart)
-	for i in range(Events_and_Var.Healt):
-		var cuore = TextureRect.new()
-		cuore.set_name("TextureRect"+str(i+1))
-		cuore.texture = cuore_texture
-		hbox.add_child(cuore)
+	reset_Heart()
 	
