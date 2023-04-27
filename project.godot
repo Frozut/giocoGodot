@@ -27,8 +27,8 @@ window/size/viewport_width=320
 window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/vsync/vsync_mode=2
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=2
 
 [layer_names]
 
@@ -38,5 +38,5 @@ window/stretch/mode="viewport"
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnftgi8h20kxa"]
+[gd_scene load_steps=5 format=3 uid="uid://bnftgi8h20kxa"]
 
 [ext_resource type="PackedScene" uid="uid://boejq57vy4nrn" path="res://Player and Enemy/player.tscn" id="1_6b4dd"]
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_hk40x"]
 [ext_resource type="PackedScene" uid="uid://dswqds1i14j1s" path="res://HUD/hud.tscn" id="3_smwid"]
+[ext_resource type="PackedScene" uid="uid://gash1mhqgjyj" path="res://TilemapObj/tile_map_level_0.tscn" id="4_i102m"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_hk40x")
@@ -14,3 +15,5 @@ script = ExtResource("1_hk40x")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Hud" parent="." instance=ExtResource("3_smwid")]
+
+[node name="TileMap" parent="." instance=ExtResource("4_i102m")]

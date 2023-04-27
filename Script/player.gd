@@ -10,7 +10,6 @@ class_name Player
 @export var FRICTION:int= 600
 @export var skin:String
 @export var DOUBLE_JUMP:int =1
-@export var HEALT: int = 3
 #creazione delle costanti
 const GRAVITY:int = 300
 const ADITION_FALL_GRAVITY:int = 120
@@ -27,10 +26,11 @@ var state = MOVE
 var buffered_jump:bool = false
 var double_jump_comodo 
 var coyote_jump:bool = false
-var current_healt:int
+var max_healt:int
+
 
 func _ready() -> void:
-	current_healt= HEALT
+	max_healt= 	Events_and_Var.Healt
 	double_jump_comodo = DOUBLE_JUMP
 	#funzione che permetti di cambiare la skin
 	PLAYER_SPRITE.frames = load(skin)
@@ -162,24 +162,27 @@ func player_taking_damage()-> void :
 	#andare a vedere in Progetto --> impostazione del progetto--> autoload, cosi facendo il sopund che abbiamo messenno verra
 	#runnato separatamente dal mondo quindi non ci sono problemi che venga eliminato
 	SoundPlayer.play_sound(SoundPlayer.HURT)
-	current_healt -=1
+	Events_and_Var.Healt -=1
 	set_modulate(Color(1,0.3,0.3,0.3))
 	if velocity.x >0:
 		velocity.x = -200	
 	else: 
 		velocity.x = 200	
 	velocity.y = -80
-	
-	if current_healt==0:player_die()
+	#mi permette ti chiamare il segnale che e` stato conensso nella clasws hud per togliere 1 cuore
+	Events_and_Var.emit_signal("signal_player_hurt")
+	if  Events_and_Var.Healt==0:player_die()
 	
 	
 	
 func player_die()->void:
-	current_healt = HEALT
+	Events_and_Var.Healt = max_healt
 	#serve per resettare la scena come è all'inizio
 	queue_free()
 	#get_tree().reload_current_scene()
 	Events_and_Var.emit_signal("player_died")
+	#mi permette ti chiamare il segnale che e` stato conensso nella clasws hud per rimettere i cuori
+	Events_and_Var.emit_signal("reset_heart")
 	
 func _on_coyote_jump_timer_timeout()->void:
 	coyote_jump = false
