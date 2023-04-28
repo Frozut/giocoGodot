@@ -37,6 +37,8 @@ func _on_player_died():
 	add_child(player)
 	#ed infine lo collegghiamo alla camera
 	player.connect_camera(Camera)
+	#mi permette ti chiamare il segnale che e` stato conensso nella clasws hud per rimettere i cuori
+	Events_and_Var.emit_signal("reset_heart")
 
 func _on_hit_checkpoint(checkpoint_position):
 	player_spaw_location = checkpoint_position

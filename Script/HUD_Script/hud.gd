@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	
 		
 func update_health_display()->void:
-	hbox.get_node("TextureRect" + str(Events_and_Var.Healt + 1)).visible = false
+	hbox.get_node("TextureRect" + str(Events_and_Var.Healt + 1)).queue_free()
 		
 func reset_Heart() -> void:
 	for i in range(Events_and_Var.Healt):

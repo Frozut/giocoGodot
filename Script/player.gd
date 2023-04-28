@@ -181,8 +181,7 @@ func player_die()->void:
 	queue_free()
 	#get_tree().reload_current_scene()
 	Events_and_Var.emit_signal("player_died")
-	#mi permette ti chiamare il segnale che e` stato conensso nella clasws hud per rimettere i cuori
-	Events_and_Var.emit_signal("reset_heart")
+	
 	
 func _on_coyote_jump_timer_timeout()->void:
 	coyote_jump = false
