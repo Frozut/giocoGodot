@@ -8,6 +8,7 @@ size = Vector2(12, 17)
 
 [node name="Player" type="CharacterBody2D"]
 top_level = true
+z_index = 10
 collision_layer = 2
 script = ExtResource("1_v86ih")
 skin = "res://Skin/playerOrangeSkin.tres"

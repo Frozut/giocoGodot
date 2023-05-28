@@ -62,7 +62,7 @@ script = ExtResource("1_whjii")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_jwmom")
-animation = &"Rise"
+animation = &"Fall"
 
 [node name="Hitbox" parent="." instance=ExtResource("2_2bvyc")]
 

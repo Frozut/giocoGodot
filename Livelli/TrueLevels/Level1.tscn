@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://yh4sqywcwmuo"]
+[gd_scene load_steps=16 format=3 uid="uid://yh4sqywcwmuo"]
 
 [ext_resource type="PackedScene" uid="uid://bnftgi8h20kxa" path="res://Livelli/level.tscn" id="1_2qnvs"]
 [ext_resource type="PackedScene" uid="uid://j5gii0dkfa2b" path="res://TilemapObj/coin.tscn" id="2_timy8"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c8ltnog2ijmmi" path="res://Sounds/Retro Beat.wav" id="9_o88up"]
 [ext_resource type="PackedScene" uid="uid://cmo4sn5v2l21s" path="res://Player and Enemy/idea_enemy.tscn" id="11_71w5r"]
 [ext_resource type="PackedScene" uid="uid://d3bike6c88fiy" path="res://TilemapObj/Object/heart.tscn" id="12_t4jcq"]
+[ext_resource type="PackedScene" uid="uid://b5w30as87opwn" path="res://TilemapObj/blockwhitgem.tscn" id="13_rfeph"]
 
 [sub_resource type="Curve2D" id="Curve2D_nhtnm"]
 _data = {
@@ -108,3 +109,6 @@ layer_0/tile_data = PackedInt32Array(4, 458753, 2, 3, 458753, 2, 65539, 458753, 
 
 [node name="Heart" parent="." index="12" instance=ExtResource("12_t4jcq")]
 position = Vector2(360, 63)
+
+[node name="Blockwhitgem" parent="." index="13" instance=ExtResource("13_rfeph")]
+position = Vector2(468, 0)
