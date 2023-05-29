@@ -9,4 +9,6 @@ func _on_body_entered(body: Node2D) -> void:
 	Events_and_Var.Healt +=1;
 	print(Events_and_Var.Healt)
 	Events_and_Var.emit_signal("take_heart")
-	queue_free()
+	var tween = create_tween()
+	tween.tween_property(self,"modulate:a",0.0,0.5)
+	tween.tween_callback(self.queue_free)
