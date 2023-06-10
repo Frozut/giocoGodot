@@ -77,7 +77,7 @@ func move_state(input,delta)->void:
 			velocity.y=  JUMP_RELESASED_FORCE
 		if Input.is_action_just_pressed("ui_up") and DOUBLE_JUMP > 0:
 			SoundPlayer.play_sound(SoundPlayer.JUMP)
-			#serve epr fare il doppio salto 
+			#serve per  fare il doppio salto 
 			velocity.y= JUMP_FORCE
 			DOUBLE_JUMP -= 1
 		#questo controllo serve per attivare un timer nel quale il personaggio non puo piu fare il dopuble jump
