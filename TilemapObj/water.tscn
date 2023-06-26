@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwcfhuyev8r1y"]
+
+[ext_resource type="Texture2D" uid="uid://daxg27avx3a58" path="res://Immagini/tiles_packed.png" id="1_p5agk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywbu6"]
+atlas = ExtResource("1_p5agk")
+region = Rect2(234, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chb02"]
+atlas = ExtResource("1_p5agk")
+region = Rect2(234, 36, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jqhnk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywbu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chb02")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="water" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_jqhnk")
+frame_progress = 0.353144

@@ -11,7 +11,7 @@ class_name Player
 @export var skin:String
 @export var DOUBLE_JUMP:int =1
 #creazione delle costanti
-const GRAVITY:int = 300
+const GRAVITY:int = 500
 const ADITION_FALL_GRAVITY:int = 120
 #creazione delle variabili
 @onready var PLAYER_SPRITE =  $AnimatedSprite2D
@@ -155,8 +155,8 @@ func applay_acceleration(amount,delta)->void:
 #per crearlo dobbiamo andare sul timer -->nodo --> selezionare il metodo timeout
 func _on_jump_buffer_timeout()->void:
 	buffered_jump=false
-func player_taking_damage()-> void :
 	
+func player_taking_damage()-> void :
 	if TIMER_INVULERABILITY.is_stopped():TIMER_INVULERABILITY.start()
 	#il sound Playuer lo possiamop chiamare quando vogliamo sicome lo abbiamo messo nelle risorse del progetto
 	#andare a vedere in Progetto --> impostazione del progetto--> autoload, cosi facendo il sopund che abbiamo messenno verra

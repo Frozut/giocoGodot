@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1s0nhhyo3273"]
+
+[ext_resource type="Script" path="res://Script/restartLevelPlayerFall.gd" id="1_rdjo6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1ai2"]
+size = Vector2(126, 18)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_rdjo6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m1ai2")
+debug_color = Color(0.980392, 0, 0.376471, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
