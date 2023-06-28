@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://nw2wtohimqri"]
+
+[ext_resource type="Script" path="res://Script/HUD_Script/message_box.gd" id="1_qiyqf"]
+[ext_resource type="FontFile" uid="uid://c8cgjsxrmqtt2" path="res://Font/ThaleahFat.ttf" id="2_str1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3na2w"]
+size = Vector2(18, 18)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w4wyy"]
+font_size = 9
+
+[node name="message_box" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qiyqf")
+text = "premi ↑ per saltare"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3na2w")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = -4.0
+theme_override_fonts/font = ExtResource("2_str1d")
+label_settings = SubResource("LabelSettings_w4wyy")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
