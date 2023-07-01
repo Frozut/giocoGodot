@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1ai2"]
 size = Vector2(126, 18)
 
-[node name="Area2D" type="Area2D"]
+[node name="restart player fall" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_rdjo6")

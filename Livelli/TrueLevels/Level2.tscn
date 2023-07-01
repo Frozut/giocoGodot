@@ -1,25 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://b52ntqc1ag0tb"]
+[gd_scene load_steps=6 format=3 uid="uid://b52ntqc1ag0tb"]
 
 [ext_resource type="PackedScene" uid="uid://bnftgi8h20kxa" path="res://Livelli/level.tscn" id="1_anv1m"]
 [ext_resource type="AudioStream" uid="uid://c8ltnog2ijmmi" path="res://Sounds/Retro Beat.wav" id="3_6xhwl"]
-[ext_resource type="PackedScene" uid="uid://beojd6csn41o6" path="res://Player and Enemy/Walking_Enemy.tscn" id="4_f0f56"]
-[ext_resource type="PackedScene" uid="uid://ba8vfgik0rh4f" path="res://TilemapObj/check_point.tscn" id="5_4how8"]
+[ext_resource type="PackedScene" uid="uid://blwmkdhytevqq" path="res://TilemapObj/tilemapGraphics.tscn" id="3_64upf"]
+[ext_resource type="PackedScene" uid="uid://q1atudc0qu4v" path="res://TilemapObj/door.tscn" id="4_ok0y1"]
+[ext_resource type="PackedScene" uid="uid://b1s0nhhyo3273" path="res://TilemapObj/restartLevelPlayerFall.tscn" id="5_xefrx"]
 
 [node name="Level" instance=ExtResource("1_anv1m")]
 
 [node name="Player" parent="." index="0"]
-position = Vector2(117, 108)
+position = Vector2(36, 126)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("3_6xhwl")
 autoplay = true
 bus = &"Music"
 
-[node name="Walking_Enemy" parent="." index="5" instance=ExtResource("4_f0f56")]
-position = Vector2(189, 108)
-
-[node name="CheckPoint" parent="." index="6" instance=ExtResource("5_4how8")]
-position = Vector2(423, 90)
-
-[node name="TileMap" parent="." index="7"]
+[node name="TileMap" parent="." index="5"]
 layer_0/tile_data = PackedInt32Array(524289, 65537, 7, 458753, 65537, 1, 458754, 131073, 1, 458755, 131073, 1, 524290, 131073, 7, 524291, 131073, 7, 524292, 131073, 7, 524293, 131073, 7, 458756, 131073, 1, 458757, 131073, 1, 458758, 131073, 1, 458759, 131073, 1, 458760, 131073, 1, 524296, 131073, 7, 524295, 131073, 7, 524294, 131073, 7, 458761, 327681, 1, 393225, 65537, 1, 393226, 131073, 1, 393227, 131073, 1, 393228, 131073, 1, 393229, 131073, 1, 393230, 131073, 1, 393231, 131073, 1, 393232, 196609, 1, 458768, 196609, 6, 524304, 196609, 7, 524303, 131073, 7, 524302, 131073, 7, 524301, 131073, 7, 524300, 131073, 7, 524299, 131073, 7, 524298, 131073, 7, 524297, 131073, 7, 458762, 131073, 6, 458763, 131073, 6, 458764, 131073, 6, 458765, 131073, 6, 458766, 131073, 6, 458767, 131073, 6, 327699, 65537, 1, 327700, 131073, 1, 327701, 131073, 1, 327702, 131073, 1, 327703, 131073, 1, 327704, 131073, 1, 327705, 131073, 1, 327706, 196609, 1, 393242, 196609, 6, 393241, 131073, 6, 393240, 131073, 6, 393239, 131073, 6, 393238, 131073, 6, 393237, 131073, 6, 393236, 131073, 6, 393235, 65537, 6, 458771, 65537, 6, 524307, 65537, 7, 524308, 131073, 7, 524309, 131073, 7, 524310, 131073, 7, 524311, 131073, 7, 524312, 131073, 7, 524313, 131073, 7, 524314, 196609, 7, 458778, 196609, 6, 458776, 131073, 6, 458775, 131073, 6, 458772, 131073, 6, 458773, 131073, 6, 458774, 131073, 6, 458777, 131073, 6)
+
+[node name="TileMap2" parent="." index="6" instance=ExtResource("3_64upf")]
+scale = Vector2(1.00133, 1)
+
+[node name="Door" parent="." index="7" instance=ExtResource("4_ok0y1")]
+position = Vector2(36, 126)
+
+[node name="Area2D" parent="." index="8" instance=ExtResource("5_xefrx")]
+position = Vector2(531, 198)
+scale = Vector2(8.39218, -1.01064)

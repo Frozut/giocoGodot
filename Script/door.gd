@@ -30,6 +30,8 @@ func go_to_next_room()-> void :
 	Transition.play_enter_transition()
 	#togliamo il gioco dalla pausa
 	get_tree().paused = false 
+	#salviamo quello che c'e` da salvare
+	Utils.save_game()
 	#grazia questo metodo andiamoa cambiare  la scena attuale con quella che vogliamo
 	get_tree().change_scene_to_file(target_level_path)
 

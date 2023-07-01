@@ -9,12 +9,10 @@ func _process(delta: float) -> void:
 	
 		
 func update_health_display()->void:
-	print(Events_and_Var.Healt)
 	hbox.get_node("TextureRect" + str(Events_and_Var.Healt + 1)).queue_free()
 		
 func reset_Heart() -> void:
 	for i in range(Events_and_Var.Healt):
-		print(i)
 		var cuore = TextureRect.new()
 		cuore.set_name("TextureRect"+str(i+1))
 		cuore.texture = cuore_texture
