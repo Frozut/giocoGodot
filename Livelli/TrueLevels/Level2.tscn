@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b52ntqc1ag0tb"]
+[gd_scene load_steps=7 format=3 uid="uid://b52ntqc1ag0tb"]
 
 [ext_resource type="PackedScene" uid="uid://bnftgi8h20kxa" path="res://Livelli/level.tscn" id="1_anv1m"]
 [ext_resource type="AudioStream" uid="uid://c8ltnog2ijmmi" path="res://Sounds/Retro Beat.wav" id="3_6xhwl"]
 [ext_resource type="PackedScene" uid="uid://blwmkdhytevqq" path="res://TilemapObj/tilemapGraphics.tscn" id="3_64upf"]
 [ext_resource type="PackedScene" uid="uid://q1atudc0qu4v" path="res://TilemapObj/door.tscn" id="4_ok0y1"]
 [ext_resource type="PackedScene" uid="uid://b1s0nhhyo3273" path="res://TilemapObj/restartLevelPlayerFall.tscn" id="5_xefrx"]
+[ext_resource type="PackedScene" uid="uid://d10y3lrq644xm" path="res://TilemapObj/tubo_area.tscn" id="6_hgklj"]
 
 [node name="Level" instance=ExtResource("1_anv1m")]
 
 [node name="Player" parent="." index="0"]
-position = Vector2(36, 126)
+position = Vector2(2070, 33)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("3_6xhwl")
@@ -34,3 +35,10 @@ position = Vector2(36, 126)
 [node name="Area2D" parent="." index="9" instance=ExtResource("5_xefrx")]
 position = Vector2(531, 198)
 scale = Vector2(8.39218, -1.01064)
+
+[node name="Tubo area" parent="." index="10" node_paths=PackedStringArray("tube_area") instance=ExtResource("6_hgklj")]
+position = Vector2(2043, 19)
+tube_area = NodePath("../Tubo area2")
+
+[node name="Tubo area2" parent="." index="11" instance=ExtResource("6_hgklj")]
+position = Vector2(945, 18)

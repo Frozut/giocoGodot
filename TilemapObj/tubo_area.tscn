@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d10y3lrq644xm"]
+
+[ext_resource type="Script" path="res://Script/tubo_area.gd" id="1_omm2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74on4"]
+size = Vector2(17, 18)
+
+[node name="Tubo area" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_omm2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_74on4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
