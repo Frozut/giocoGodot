@@ -2,8 +2,7 @@ extends Node2D
 
 const  playerScene = preload("res://Player and Enemy/player.tscn")
 
-var player_spaw_location = Vector2.ZERO
-
+var player_spaw_location = Vector2.ZERO	
 @onready var player: = $Player
 @onready var Camera = $Camera2D
 @onready var timer = $Timer
@@ -42,4 +41,6 @@ func _on_player_died():
 
 func _on_hit_checkpoint(checkpoint_position):
 	player_spaw_location = checkpoint_position
+	
+
 	
