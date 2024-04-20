@@ -23,7 +23,6 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	# Esegui azioni quando il corpo esce dall'Area2D
-	print("Il corpo ha lasciato l'Area2D.")
 	playerInside = false
 	set_process(false) # Disattiva il process quando il giocatore esce dall'Area2D
 

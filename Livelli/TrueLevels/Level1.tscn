@@ -44,8 +44,7 @@ scale = Vector2(2.54203, -0.460956)
 [node name="area message" type="Node" parent="." index="13"]
 
 [node name="message_box" parent="area message" index="0" instance=ExtResource("3_w3tgy")]
-position = Vector2(117, 117)
-scale = Vector2(0.999995, 1.00076)
+position = Vector2(120, 117)
 
 [node name="message_box2" parent="area message" index="1" instance=ExtResource("3_w3tgy")]
 position = Vector2(711, 99)
